@@ -1,0 +1,89 @@
+/* FooCorp app landing pages — single shared stylesheet.
+   Lightweight, no framework, no build step. ~4KB, one HTTP request, cached across pages.
+   Per-app accent color set via [data-accent] on <body>. */
+
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f6f8f6;
+  --ink: #16241c;
+  --ink-soft: #4a5a50;
+  --line: #e3e9e4;
+  --accent: #2e7d46;      /* default; overridden per app */
+  --accent-ink: #ffffff;
+  --radius: 14px;
+  --maxw: 1080px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body[data-accent="savorkeep"] { --accent: #c2451d; }
+body[data-accent="fretkit"]   { --accent: #5b3fb5; }
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+  font-size: 17px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; }
+h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 .4em; }
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); }
+h2 { font-size: clamp(1.4rem, 3.2vw, 2rem); margin-top: 0; }
+p { margin: 0 0 1em; color: var(--ink-soft); }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+/* Header / nav */
+.site-header { border-bottom: 1px solid var(--line); background: var(--bg); }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+.brand { font-weight: 700; color: var(--ink); font-size: 1.15rem; letter-spacing: -0.02em; }
+.brand:hover { text-decoration: none; }
+.nav a { color: var(--ink-soft); margin-left: 20px; font-size: .95rem; }
+
+/* Hero */
+.hero { padding: 64px 0 48px; background: linear-gradient(180deg, var(--bg-soft), var(--bg)); }
+.hero .eyebrow { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; margin-bottom: 12px; }
+.hero p.lede { font-size: 1.2rem; max-width: 42ch; color: var(--ink-soft); }
+
+/* Buttons / CTA */
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 8px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: var(--accent-ink);
+  padding: 13px 22px; border-radius: 999px; font-weight: 600; font-size: 1rem;
+}
+.btn:hover { text-decoration: none; filter: brightness(1.05); }
+.btn--ghost { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+
+/* Sections & feature grid */
+section { padding: 52px 0; border-top: 1px solid var(--line); }
+.grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.card {
+  background: var(--bg-soft); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px;
+}
+.card h3 { font-size: 1.15rem; }
+.card p { margin: 0; font-size: .97rem; }
+
+/* Keyword-intent FAQ (SEO long-tail capture) */
+.faq details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+.faq summary { font-weight: 600; cursor: pointer; color: var(--ink); font-size: 1.05rem; }
+.faq p { margin: 12px 0 0; }
+
+/* App hub cards */
+.apps { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.app-card { display: block; background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; color: inherit; }
+.app-card:hover { text-decoration: none; border-color: var(--accent); }
+.app-card .kicker { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); }
+.app-card h3 { margin: 6px 0 8px; color: var(--ink); }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--line); background: var(--bg-soft); padding: 40px 0; margin-top: 40px; font-size: .9rem; }
+.site-footer a { color: var(--ink-soft); }
+.site-footer .links a { margin-right: 18px; }
+
+.muted { color: var(--ink-soft); font-size: .9rem; }
