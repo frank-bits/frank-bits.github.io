@@ -15,6 +15,11 @@ NEW="https://apps.foocorp.dev"          # or a free host subdomain, e.g. https:/
 grep -rl 'https://frank-bits.github.io' . | xargs sed -i '' "s#https://frank-bits.github.io#${NEW}#g"   # macOS sed
 ```
 
+**GardenPin is settled:** it already lives on its own brand domain, **gardenpin.com**
+(CEO-owned). Its SEO upgrade ships separately in `gardenpin.com-seo-patch/`, and the
+github.io `/gardenpin/` page now canonicalizes to it and is excluded from the sitemap.
+The domain decision below therefore only covers the **hub + SavorKeep + Fretkit**.
+
 Options, cheapest first:
 - **Free host subdomain** (no purchase): `*.pages.dev` (Cloudflare), `*.netlify.app`, or `*.github.io`. Ship today, add a custom domain later.
 - **Custom domain**: GardenPin already lists `gardenpin.com` as its seller URL. A FooCorp-wide domain (e.g. `foocorp.dev`) keeps all three apps' SEO authority on one origin — recommended for the hub + subfolders structure used here.
